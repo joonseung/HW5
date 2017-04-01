@@ -74,9 +74,37 @@ public class ReadQuery {
         
         String table = "";
         
-        table += "<table border=1>";
+        table += "<table>";
         
         try {
+            
+            table += "<thead>";
+                    table += "<th>";
+                    table += "ID";
+                    table += "</th>";
+                    
+                    table += "<th>";
+                    table += "Name";
+                    table += "</th>";
+                    
+                    table += "<th>";
+                    table += "Role";
+                    table += "</th>";
+                    
+                    table += "<th>";
+                    table += "Price";
+                    table += "</th>";
+                    
+                    table += "<th>";
+                    table += "Skins";
+                    table += "</th>";
+                    
+                    table += "<th>";
+                    table += "Action";
+                    table += "</th>";
+                    
+                table += "</thead>";
+                
             while(this.results.next()){
                 
                 lolChampions champ = new lolChampions();
@@ -85,6 +113,8 @@ public class ReadQuery {
                 champ.setChampRole(this.results.getString("champRole"));
                 champ.setPrice(this.results.getInt("price"));
                 champ.setSkins(this.results.getInt("skins"));
+                
+                
                 
                 table += "<tr>";
                 
