@@ -107,7 +107,11 @@ public class ReadQuery {
                     table += "<td>";
                     table += champ.getSkins();
                     table += "</td>";
-                
+                    
+                    table += "<td>";
+                    table += "<a href = delete?champID=" + champ.getChampID() +"> Delete </a>";
+                    table += "</td>";
+                    
                 table += "</tr>";
             }
         } catch (SQLException ex) {
