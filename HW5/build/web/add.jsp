@@ -10,25 +10,29 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title> Add A New Champion</title>
+        <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
     </head>
     <body>
         <h1>Add A New Champion</h1>
         
-        <form name="addFrom" action="addChampion" method="get">
+        <div class="add" align="center">
+        <form class="add" name="addFrom" action="addChampion" method="get">
             
-            <label> Name: </label>
+            <label> Name: </label><br>
             <input type ="text" name="champName" value=""/>
             <br>
-            <label> Role: </label>
+            <label> Role: </label><br>
             <input type ="text" name="champRole" value=""/>
             <br>
-            <label> Price: </label>
+            <label> Price: </label><br>
             <input type ="text" name="price" value=""/>
             <br>
-            <label> Skins: </label>
+            <label> Skins: </label><br>
             <input type ="text" name="skins" value=""/>
-            <br>
+            <br><br>
             <input type ="submit" name="submit" value="Submit"/>
         </form>
+            </div>
+        
     </body>
 </html>
