@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.lolChampions;
 
 /**
  *
@@ -50,6 +51,10 @@ public class AddQuery {
             }
             
         }
-        
+        // lolCahmpions and champ object.... Freinds class and friend object ... but can't find object... see " https://www.youtube.com/watch?v=3ZmipkRPRRA" 10:26 if question
+    public void doAdd (lolChampions champ){
+    
+        String query = "INSERT INTO lolChampions (champName, champRole, price, skins) VALUES (?, ?, ?, ?)"; // said friends table but used lolChampions table of mine
+    }
          
 }
