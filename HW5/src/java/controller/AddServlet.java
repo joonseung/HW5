@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package controller;
 
+import dbHelpers.AddQuery;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -12,13 +14,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.lolChampions;
 
 /**
  *
  * @author Abc
  */
-@WebServlet(urlPatterns = {"/add"})
-public class AddForm extends HttpServlet {
+@WebServlet(name = "AddServlet", urlPatterns = {"/addChampion"})
+public class AddServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +40,10 @@ public class AddForm extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddForm</title>");            
+            out.println("<title>Servlet AddServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AddForm at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AddServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,9 +62,8 @@ public class AddForm extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        //Pass execution on to doPost
-        doPost (request, response);
-        
+            // Pass execution on to doPost
+                doPost (request, response);
     }
 
     /**
@@ -76,10 +78,30 @@ public class AddForm extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String url = "/add.jsp";
+        // get the data
+        String champName = request.getParameter("champName");
+        String champRole = request.getParameter("champRole");
+        int price = Integer.parseInt(request.getParameter("price"));
+        int skins = Integer.parseInt(request.getParameter("skins"));
+         
+        //set up a champ object
+        lolChampions champ = new lolChampions();
+        champ.setChampName(champName);
+        champ.setChampRole(champRole);
+        champ.setPrice(price);
+        champ.setSkins(skins);
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-        dispatcher.forward (request, response); 
+        //set up an addQuery object
+        AddQuery aq = new AddQuery(); 
+        
+        //pass the champ to addQuery to add the database
+        aq.doAdd(champ);
+        
+        //pass execution control to the ReadServlet
+        String url = "/read";
+        
+        RequestDispatcher dispatcher = request.getRequestDispatcher (url);
+        dispatcher.forward (request, response);
     }
 
     /**

@@ -17,10 +17,10 @@
         <form name="addFrom" action="addChampion" method="get">
             
             <label> Name: </label>
-            <input type ="text" name="name" value=""/>
+            <input type ="text" name="champName" value=""/>
             <br>
             <label> Role: </label>
-            <input type ="text" name="role" value=""/>
+            <input type ="text" name="champRole" value=""/>
             <br>
             <label> Price: </label>
             <input type ="text" name="price" value=""/>
